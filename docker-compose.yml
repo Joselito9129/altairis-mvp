@@ -2,13 +2,13 @@ version: '3.9'
 
 services:
   db:
-    image: mariadb:10.6
+    image: mariadb:10.11  # Versión estable y compatible
     container_name: altairis-db
     environment:
       MYSQL_DATABASE: altairis
-      MYSQL_USER: root
-      MYSQL_PASSWORD: Jn123*
-      MYSQL_ROOT_PASSWORD: Jn123*
+      MYSQL_USER: ${DB_USER:-altairis}  # Default: altairis si no hay .env
+      MYSQL_PASSWORD: ${DB_PASS:-Altairis2026!Secure}  # Default complejo
+      MYSQL_ROOT_PASSWORD: ${ROOT_PASS:-RootAltairis2026!}
     ports:
       - "3306:3306"
     volumes:
@@ -28,9 +28,9 @@ services:
     container_name: altairis-backend
     environment:
       SPRING_DATASOURCE_URL: jdbc:mariadb://db:3306/altairis
-      SPRING_DATASOURCE_USERNAME: root
-      SPRING_DATASOURCE_PASSWORD: Jn123*
-      SPRING_PROFILES_ACTIVE: local
+      SPRING_DATASOURCE_USERNAME: ${DB_USER:-altairis}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASS:-Altairis2026!Secure}
+      SPRING_PROFILES_ACTIVE: local  # Usa tu perfil con Flyway
     ports:
       - "8080:8080"
     depends_on:
