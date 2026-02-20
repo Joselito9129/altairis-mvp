@@ -1,0 +1,39 @@
+<div class="dashboard">
+
+  <!-- KPI ROW -->
+  <div class="kpi-row">
+    <mat-card class="kpi-card">
+      <div class="kpi-content">
+        <div class="kpi-icon">🏨</div>
+        <div>
+          <div class="kpi-label">Hotels</div>
+          <div class="kpi-value">{{ hotels }}</div>
+        </div>
+      </div>
+    </mat-card>
+
+    <mat-card class="kpi-card">
+      <div class="kpi-content">
+        <div class="kpi-icon">📅</div>
+        <div>
+          <div class="kpi-label">Inventory</div>
+          <div class="kpi-value">{{ inventory | number }}</div>
+        </div>
+      </div>
+    </mat-card>
+
+    <mat-card class="kpi-card">
+      <div class="kpi-content">
+        <div class="kpi-icon">🧾</div>
+        <div>
+          <div class="kpi-label">Bookings</div>
+          <div class="kpi-value">{{ bookings | number }}</div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- CHART AREA -->
+  <app-area-chart [labels]="labels" [values]="bookingsPerDay"></app-area-chart>
+
+</div>

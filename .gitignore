@@ -1,0 +1,21 @@
+# Backend
+backend/target/
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
+backend/.idea/
+backend/*.iml
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/.idea/
+frontend/*.log
+
+# General
+.DS_Store
+*.log
+.env
+.idea/
+.vscode/

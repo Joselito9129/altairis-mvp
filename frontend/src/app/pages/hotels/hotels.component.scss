@@ -1,0 +1,77 @@
+.filters, .form, .row, .row2, .create {
+  display: grid;
+  gap: 12px;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+
+.form-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.table-wrap {
+  margin-top: 24px;
+  overflow-x: auto;
+}
+
+.mat-column-actions {
+  width: 80px;
+  text-align: center;
+}
+
+.hotels-container {
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
+}
+
+.left-column {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.right-column {
+  flex: 2;
+  position: sticky;
+  top: 24px;
+  height: calc(100vh - 48px);
+  overflow: hidden;
+
+  @media (max-width: 1024px) {
+    position: static;
+    height: auto;
+  }
+}
+
+.filters-card, .form-card, .table-card, .map-card {
+  padding: 16px;
+}
+
+.filters-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 16px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}

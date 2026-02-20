@@ -1,0 +1,11 @@
+.kpis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  
+  .kpi {
+    border-left: 6px solid var(--mat-sys-primary);
+  }
+  

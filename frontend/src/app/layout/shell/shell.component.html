@@ -1,0 +1,56 @@
+<!-- src/app/layout/shell/shell.component.html -->
+<mat-sidenav-container class="container">
+  <mat-sidenav class="sidenav" mode="side" [(opened)]="opened">
+    <div class="brand">
+      <div class="brand-title">Altairis</div>
+      <div class="brand-sub">Backoffice</div>
+    </div>
+    
+
+    <mat-nav-list>
+      <a mat-list-item routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <mat-icon>dashboard</mat-icon><span>Dashboard</span>
+      </a>
+
+      <a mat-list-item routerLink="/countries" routerLinkActive="active">
+        <mat-icon>public</mat-icon><span>Countries</span>
+      </a>
+
+      <a mat-list-item routerLink="/cities" routerLinkActive="active">
+        <mat-icon>location_city</mat-icon><span>Cities</span>
+      </a>
+
+      <a mat-list-item routerLink="/hotels" routerLinkActive="active">
+        <mat-icon>apartment</mat-icon><span>Hotels</span>
+      </a>
+
+      <a mat-list-item routerLink="/room-types" routerLinkActive="active">
+        <mat-icon>hotel</mat-icon><span>Room Types</span>
+      </a>
+
+      <a mat-list-item routerLink="/inventory" routerLinkActive="active">
+        <mat-icon>event_available</mat-icon><span>Inventory</span>
+      </a>
+
+      <a mat-list-item routerLink="/bookings" routerLinkActive="active">
+        <mat-icon>assignment</mat-icon><span>Bookings</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar class="toolbar">
+      <button mat-icon-button (click)="opened = !opened" aria-label="Toggle menu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="title">Backoffice</span>
+      <span class="spacer"></span>
+      <span class="hint">API: http://localhost:8080</span>
+    </mat-toolbar>
+    
+
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

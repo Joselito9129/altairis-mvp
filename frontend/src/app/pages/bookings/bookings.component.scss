@@ -1,0 +1,7 @@
+.filters, .form, .row, .row2, .create {
+    display: grid;
+    gap: 12px;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+  

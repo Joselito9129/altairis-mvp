@@ -1,0 +1,61 @@
+version: '3.9'
+
+services:
+  db:
+    image: mariadb:10.6
+    container_name: altairis-db
+    environment:
+      MYSQL_DATABASE: altairis
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Jn123*
+      MYSQL_ROOT_PASSWORD: Jn123*
+    ports:
+      - "3306:3306"
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - altairis-net
+    healthcheck:
+      test: ["CMD", "mariadb-admin", "--protocol=tcp", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: altairis-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mariadb://db:3306/altairis
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Jn123*
+      SPRING_PROFILES_ACTIVE: local
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - altairis-net
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: altairis-frontend
+    ports:
+      - "4200:80"
+    environment:
+      - API_URL=http://backend:8080/api
+    depends_on:
+      - backend
+    networks:
+      - altairis-net
+
+networks:
+  altairis-net:
+    driver: bridge
+
+volumes:
+  db-data:
